@@ -31,13 +31,13 @@ int nqueen(int b[][50], int n, int size){
     int p, q;
     for(p=0; p<size; p++){
         for(q=0; q<size; q++){
-            if(is_attacked(p, q, b, size))
-                continue;
-            b[p][q] = 1;
-            if(nqueen(b, n-1, size))
-                return 1;
-            else
-                b[p][q] = 0;
+            if(!is_attacked(p, q, b, size)){
+                b[p][q] = 1;
+                if(nqueen(b, n-1, size))
+                    return 1;
+                else
+                    b[p][q] = 0;
+            }
         }
     }
     return 0;
